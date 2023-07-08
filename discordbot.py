@@ -1,4 +1,4 @@
-from me2 import *
+from me import *
 import random, requests, datetime, sys
 import os
 from typing import Any
