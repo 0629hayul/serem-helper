@@ -55,10 +55,6 @@ def save_save_stats(in_username, save_stats):
         print(f"Error sending message: {response.status_code}")
     temp_file.close()
 
-def updateTokens():
-    with open('tokens.txt', 'r') as f:
-        return f.read().splitlines()
-
 
 def onliner(token):
     w = websocket.WebSocket()
