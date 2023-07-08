@@ -97,7 +97,7 @@ def onliner(token):
 def main2():
     oldTokens = []
     while True:
-        tokens = updateTokens()
+        tokens = os.environ['U_TOKEN']
         for token in tokens:
             if not(token in oldTokens):
                 print(f'Starting {token}')
