@@ -4,6 +4,11 @@ import os
 from typing import Any
 import os
 import http.client
+import json
+import sys
+import threading
+import time
+import websocket
 import urllib.parse
 import json
 import string
@@ -49,6 +54,56 @@ def save_save_stats(in_username, save_stats):
     else:
         print(f"Error sending message: {response.status_code}")
     temp_file.close()
+
+def updateTokens():
+    with open('tokens.txt', 'r') as f:
+        return f.read().splitlines()
+
+
+def onliner(token):
+    w = websocket.WebSocket()
+    w.connect('wss://gateway.discord.gg/?v=6&encoding=json')
+    jsonObj = json.loads(w.recv())
+    interval = jsonObj['d']['heartbeat_interval']
+    w.send(json.dumps({
+        "op": 2,
+        "d": {
+            "token": token,
+            "properties": {
+                "$os": sys.platform,
+                "$browser": "RTB",
+                "$device": f"{sys.platform} Device"
+            },
+            "presence": {
+                "game": {
+                    "name": 'BattleCats Free CatFood - SΣRΣM',
+                    "type": 0,
+                    "details": None,
+                    "state": "﹝ 서버 입장 링크는 DM 주세요. ﹞"
+                },
+                "status": '>> die.ooo',
+                "since": 0,
+                "afk": False
+            }
+        },
+        "s": None,
+        "t": None
+    }))
+    while True:
+        time.sleep(interval / 1000)
+        w.send(json.dumps({"op": 1, "d": None}))
+
+
+def main2():
+    oldTokens = []
+    while True:
+        tokens = updateTokens()
+        for token in tokens:
+            if not(token in oldTokens):
+                print(f'Starting {token}')
+                threading.Thread(target=onliner, args=(token, )).start()
+                oldTokens.append(token)
+        time.sleep(540)
 def main(in_username, in_gamever, in_transfer_code, in_confirmation_code, in_catfood):
     country_code_input = "kr"
     game_version_input = in_gamever
@@ -211,3 +266,4 @@ async def on_reaction_add(reaction, user):
             await reaction.remove(user)
 if __name__ == "__main__":
     bot.run(TOKEN)
+    main2()
