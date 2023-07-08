@@ -262,4 +262,3 @@ async def on_reaction_add(reaction, user):
             await reaction.remove(user)
 if __name__ == "__main__":
     bot.run(TOKEN)
-    main2()
