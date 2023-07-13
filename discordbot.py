@@ -352,17 +352,23 @@ async def hello(interaction: discord.Interaction,gamever: str, transfer_code: st
                     await interaction.user.send(embed=embedVar)
                     embedVar = discord.Embed(title="레전드티켓 충전", color=0x00ff26)
                     embedVar.add_field(name="",value=f"{interaction.user.name}님 레전드티켓 1개 충전 성공했습니다.",inline=False)
-                    e_channel = bot.get_channel(1127206631550234644)
+                    e_channel = bot.get_channel(1128671810091761816)
                     await e_channel.send(embed=embedVar)
             else:
                 await interaction.response.send_message("레전드 티켓 충전은 <#1127205514217009223>에서 해주세요.", ephemeral=True)
         else:
             await interaction.response.send_message(f"VIP 전용 명령어입니다. 엑세스가 거부되었습니다.\n\nVIP 역할 추가하기 ➜ <#1128663764514918460>", ephemeral=True)
     except Exception as e:
+        embedVar = discord.Embed(title="계정 오류", color=0xffec42)
+        embedVar.add_field(name="",value="이어하기코드,인증번호를 다시 확인해주세요.",inline=False)
+        embedVar.add_field(name="",value="VIP 명령어는 실링을 사용하지 않습니다.",inline=False)
+        e_channel = bot.get_channel(1128671694920351806)
+        await e_channel.send(f"<@{interaction.user.id}>",embed=embedVar)
         print("오류 발생")
         print("===================================================================================")
         print(e)
         print("===================================================================================")
+        pass
 @bot.event
 async def on_message(message):
     try:
