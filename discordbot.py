@@ -183,7 +183,7 @@ async def hello(interaction: discord.Interaction,gamever: str, transfer_code: st
                 embedVar = discord.Embed(title="냥코티켓 충전 성공", color=0xfffffe)
                 embedVar.add_field(name="", value=f"{interaction.user.name}님의 계정에 냥코티켓 {item_value}개 충전을 성공했습니다.", inline=False)
                 embedVar.add_field(name="", value=f"이어하기코드 : **{tran}**\n인증번호 : **{pin}**\n문의코드 : **{inquiry_code}**", inline=False)
-                embedVar.add_field(name="", value=f"TRΔIΠ 서버를 이용해주셔서 감사합니다.\n* 구매후기 : <#1128663548982210684>", inline=False)
+                embedVar.add_field(name="", value=f"SΣRΣM 서버를 이용해주셔서 감사합니다.\n* 구매후기 : <#1128663548982210684>", inline=False)
 
                 embedVar.set_footer(text='\u200b',icon_url="https://cdn.discordapp.com/avatars/819436785998102548/d8997736cce6e2919aebe961b301156c.png?size=512")
                 embedVar.timestamp = datetime.datetime.now()
@@ -223,7 +223,7 @@ async def hello(interaction: discord.Interaction,gamever: str, transfer_code: st
                 embedVar = discord.Embed(title="레어티켓 충전 성공", color=0xfffffe)
                 embedVar.add_field(name="", value=f"{interaction.user.name}님의 계정에 레어티켓 {item_value}개 충전을 성공했습니다.", inline=False)
                 embedVar.add_field(name="", value=f"이어하기코드 : **{tran}**\n인증번호 : **{pin}**\n문의코드 : **{inquiry_code}**", inline=False)
-                embedVar.add_field(name="", value=f"TRΔIΠ 서버를 이용해주셔서 감사합니다.\n* 구매후기 : <#1128663548982210684>", inline=False)
+                embedVar.add_field(name="", value=f"SΣRΣM 서버를 이용해주셔서 감사합니다.\n* 구매후기 : <#1128663548982210684>", inline=False)
 
                 embedVar.set_footer(text='\u200b',icon_url="https://cdn.discordapp.com/avatars/819436785998102548/d8997736cce6e2919aebe961b301156c.png?size=512")
                 embedVar.timestamp = datetime.datetime.now()
@@ -265,7 +265,7 @@ async def hello(interaction: discord.Interaction,gamever: str, transfer_code: st
                 embedVar = discord.Embed(title="플레티넘티켓 충전 성공", color=0xfffffe)
                 embedVar.add_field(name="", value=f"{interaction.user.name}님의 계정에 플레티넘티켓 {item_value}개 충전을 성공했습니다.", inline=False)
                 embedVar.add_field(name="", value=f"이어하기코드 : **{tran}**\n인증번호 : **{pin}**\n문의코드 : **{inquiry_code}**", inline=False)
-                embedVar.add_field(name="", value=f"TRΔIΠ 서버를 이용해주셔서 감사합니다.\n* 구매후기 : <#1128663548982210684>", inline=False)
+                embedVar.add_field(name="", value=f"SΣRΣM 서버를 이용해주셔서 감사합니다.\n* 구매후기 : <#1128663548982210684>", inline=False)
 
                 embedVar.set_footer(text='\u200b',icon_url="https://cdn.discordapp.com/avatars/819436785998102548/d8997736cce6e2919aebe961b301156c.png?size=512")
                 embedVar.timestamp = datetime.datetime.now()
@@ -332,7 +332,7 @@ async def hello(interaction: discord.Interaction,gamever: str, transfer_code: st
         author_name = interaction.user.name
         vip_role = discord.utils.get(interaction.guild.roles, id=1128659833831301201)
         if vip_role in interaction.user.roles:
-            if m_channel == 1127205514217009223:
+            if m_channel == 1128661547628109907:
                 if author_id in user_dict2 and time.time() - user_dict2[author_id] < cooltime2:
                     cool_time2 = round(user_dict2[author_id] + cooltime2 - time.time())
                     wait_time2 = convert_time(cool_time2)        
@@ -345,7 +345,7 @@ async def hello(interaction: discord.Interaction,gamever: str, transfer_code: st
                     embedVar = discord.Embed(title="레전드티켓 충전 성공", color=0xfffffe)
                     embedVar.add_field(name="", value=f"{interaction.user.name}님의 계정에 레전드티켓 충전을 성공했습니다.", inline=False)
                     embedVar.add_field(name="", value=f"이어하기코드 : **{tran}**\n인증번호 : **{pin}**\n문의코드 : **{inquiry_code}**", inline=False)
-                    embedVar.add_field(name="", value=f"TRΔIΠ 서버를 이용해주셔서 감사합니다.\n* 구매후기 : <#1128663548982210684>", inline=False)
+                    embedVar.add_field(name="", value=f"SΣRΣM 서버를 이용해주셔서 감사합니다.\n* 구매후기 : <#1128663548982210684>", inline=False)
 
                     embedVar.set_footer(text='\u200b',icon_url="https://cdn.discordapp.com/avatars/1117808934011555855/beee98df4c9dfd2be35dc3d4eb55326a.png?size=512")
                     embedVar.timestamp = datetime.datetime.now()
@@ -374,7 +374,7 @@ async def on_message(message):
             points[p_user.id] =+ 100
             await message.delete()
         if message.content.startswith('&data') and message.author.id in admin_ids:
-            await message.author.send(points)
+            await message.author.send(f"```{points}```")
         if message.content.startswith('!a') and message.author.id in admin_ids:
             p_user = message.author
             point = points.get(p_user.id, 0)
